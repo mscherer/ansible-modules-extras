@@ -24,10 +24,8 @@ DOCUMENTATION = '''
 module: zabbix_hostmacro
 short_description: Zabbix host macro creates/updates/deletes
 description:
-   - When the host macro does not exists, a new macro will be created, added to specific host.
-   - When the host macro already exists, the value will be updated.
-   - Delete a host macro from Zabbix if the macro exists.
-version_added: "1.9"
+   - manages Zabbix host macros, it can create, update or delete them.
+version_added: "2.0"
 author: Dean Hailin Song
 requirements:
     - zabbix-api python module
@@ -35,7 +33,6 @@ options:
     server_url:
         description:
             - Url of Zabbix server, with protocol (http or https).
-              C(url) is an alias for C(server_url).
         required: true
         aliases: [ "url" ]
     login_user:
@@ -48,12 +45,11 @@ options:
         required: true
     host_name:
         description:
-            - Technical name of the host.
-            - If the host has already been added, the host name won't be updated.
+            - Name of the host.
         required: true
     macro_name:
         description:
-            - Technical name of the host macro.
+            - Name of the host macro.
         required: true
     macro_value:
         description:
@@ -61,8 +57,7 @@ options:
         required: true
     state:
         description:
-            - create/update or delete macro.
-            - Possible values are: present and absent. If the macro already exists, and the state is "present", just to update the macro.
+            - 'Possible values are: "present" and "absent". If the macro already exists, and the state is "present", it will just to update the macro if needed.'
         required: false
         default: "present"
     timeout:
