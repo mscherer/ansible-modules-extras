@@ -282,14 +282,6 @@ def main():
     immediate = module.params['immediate']
     timeout = module.params['timeout']
 
-    ## Check for firewalld running
-    try:
-        if fw.connected == False:
-            module.fail_json(msg='firewalld service must be running')
-    except AttributeError:
-        module.fail_json(msg="firewalld connection can't be established,\
-                version likely too old. Requires firewalld >= 2.0.11")
-
     modification_count = 0
     if service != None:
         modification_count += 1
