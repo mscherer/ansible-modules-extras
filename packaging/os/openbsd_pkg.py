@@ -439,7 +439,7 @@ def main():
             name = dict(required=True),
             state = dict(required=True, choices=['absent', 'installed', 'latest', 'present', 'removed']),
             build = dict(default='no', type='bool'),
-            ports_dir = dict(default='/usr/ports'),
+            ports_dir = dict(default='/usr/ports', type='path'),
         ),
         supports_check_mode = True
     )
