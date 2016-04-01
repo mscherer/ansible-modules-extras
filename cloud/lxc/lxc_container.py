@@ -1678,7 +1678,8 @@ def main():
                 type='str'
             ),
             config=dict(
-                type='str',
+                type='path',
+                default='/etc/lxc/default.conf'
             ),
             vg_name=dict(
                 type='str',
@@ -1696,7 +1697,7 @@ def main():
                 default='5G'
             ),
             directory=dict(
-                type='str'
+                type='path'
             ),
             zfs_root=dict(
                 type='str'
@@ -1705,7 +1706,7 @@ def main():
                 type='str'
             ),
             lxc_path=dict(
-                type='str'
+                type='path'
             ),
             state=dict(
                 choices=LXC_ANSIBLE_STATES.keys(),
@@ -1738,7 +1739,7 @@ def main():
                 default='false'
             ),
             archive_path=dict(
-                type='str',
+                type='path',
             ),
             archive_compression=dict(
                 choices=LXC_COMPRESSION_MAP.keys(),
