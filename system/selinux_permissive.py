@@ -36,14 +36,16 @@ options:
         - "indicate if the domain should or should not be set as permissive"
     required: true
     choices: [ 'True', 'False' ]
-  no_reload:
+  reload:
     description:
         - "automatically reload the policy after a change"
-        - "default is set to 'false' as that's what most people would want after changing one domain"
+        - "default is set to 'true' as that's what most people would want after changing one domain"
         - "Note that this doesn't work on older version of the library (example EL 6), the module will silently ignore it in this case"
+        - "This option was called no_reload in older version of the module, but got changed to be more descriptive"
     required: false
-    default: False
+    default: True
     choices: [ 'True', 'False' ]
+    version_added: "2.2"
   store:
     description:
       - "name of the SELinux policy store to use"
@@ -75,7 +77,7 @@ def main():
             domain=dict(aliases=['name'], required=True),
             store=dict(required=False, default=''),
             permissive=dict(type='bool', required=True),
-            no_reload=dict(type='bool', required=False, default=False),
+            reload=dict(type='bool', required=False, default=True),
         ),
         supports_check_mode=True
     )
@@ -85,7 +87,8 @@ def main():
     store = module.params['store']
     permissive = module.params['permissive']
     domain = module.params['domain']
-    no_reload = module.params['no_reload']
+    # reload is a builtin function, so use reload_ to avoid conflict
+    reload_ = module.params['reload']
 
     if not HAVE_SEOBJECT:
         module.fail_json(changed=False, msg="policycoreutils-python required for this module")
@@ -98,7 +101,7 @@ def main():
 
     # not supported on EL 6
     if 'set_reload' in dir(permissive_domains):
-        permissive_domains.set_reload(not no_reload)
+        permissive_domains.set_reload(reload_)
 
     try:
         all_domains = permissive_domains.get_all()
