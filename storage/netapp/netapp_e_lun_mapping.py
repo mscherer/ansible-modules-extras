@@ -78,19 +78,6 @@ options:
       - All parameters I(lun), I(target), I(target_type) and I(volume_name) must still be supplied.
     required: True
     choices: ["present", "absent"]
-  api_url:
-    description:
-      - "The full API url. Example: http://ENDPOINT:8080/devmgr/v2"
-      - This can optionally be set via an environment variable, API_URL
-    required: False
-  api_username:
-    description:
-      - The username used to authenticate against the API. This can optionally be set via an environment variable, API_USERNAME
-    required: False
-  api_password:
-    description:
-      - The password used to authenticate against the API. This can optionally be set via an environment variable, API_PASSWORD
-    required: False
 '''
 
 EXAMPLES = '''
