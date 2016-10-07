@@ -52,7 +52,7 @@ options:
     default: null
   password:
     description:
-      - Encryption password, the path to a file containing the pasword, or
+      - Encryption password, the path to a file containing the password, or
         'none' or '-' if the password should be entered at boot.
     required: false
     default: "none"
