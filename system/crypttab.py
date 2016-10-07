@@ -92,9 +92,9 @@ def main():
             name           = dict(required=True),
             state          = dict(required=True, choices=['present', 'absent', 'opts_present', 'opts_absent']),
             backing_device = dict(default=None),
-            password       = dict(default=None),
+            password       = dict(default=None, type='path'),
             opts           = dict(default=None),
-            path           = dict(default='/etc/crypttab')
+            path           = dict(default='/etc/crypttab', type='path')
         ),
         supports_check_mode = True
     )
