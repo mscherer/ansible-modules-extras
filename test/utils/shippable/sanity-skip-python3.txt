@@ -49,7 +49,6 @@
 /commands/expect.py
 /database/misc/mongodb_parameter.py
 /database/misc/mongodb_user.py
-/database/misc/redis.py
 /database/mysql/mysql_replication.py
 /database/postgresql/postgresql_ext.py
 /database/postgresql/postgresql_lang.py
