@@ -34,8 +34,6 @@
 /cloud/google/gce_img.py
 /cloud/google/gce_tag.py
 /cloud/misc/ovirt.py
-/cloud/misc/proxmox.py
-/cloud/misc/proxmox_template.py
 /cloud/misc/virt_net.py
 /cloud/misc/virt_pool.py
 /cloud/profitbricks/profitbricks.py
